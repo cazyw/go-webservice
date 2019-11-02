@@ -1,4 +1,4 @@
-# Go Project Template
+# Go Web Service Project
 
 ## Development Commands
 
@@ -21,9 +21,19 @@ go mod init github.com/cazyw/go-webservice
 
 ```
 
+To build
+
+```
+make toLinux
+make toWindows
+
+```
+
 To test the running app
 
 ```
+./go-webservice
+
 curl http://localhost:8080
 ```
 
