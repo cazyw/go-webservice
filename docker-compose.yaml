@@ -1,19 +1,20 @@
 version: '3.7'
 services:
   go:
-    container_name: gophercon
+    container_name: go-webservice
     build:
       context: './docker'
       target: 'develop'
     volumes:
-      - './:/gophercon/'
+      - './:/go-webservice/'
     env_file:
       - .env
     environment:
       - ENV1=${ENV1}
       - ENV2=${ENV2}
+      - LOG_FILE_LOCATION=${LOG_FILE_LOCATION}
     ports:
       - 8080:8080
-    working_dir: '/gophercon/'
+    working_dir: '/go-webservice/'
     command: ['/bin/sh', '-c', 'tail -f /dev/null']
     restart: always

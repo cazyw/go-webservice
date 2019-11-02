@@ -1,5 +1,8 @@
 toLinux :
-	GOOS=linux GOARCH=amd64 go build -o goapp *.go
+	GOOS=linux GOARCH=amd64 go build -o go-webservice ./webapp/cmd/*.go
+
+toWindows :
+	GOOS=windows GOARCH=amd64 go build -o go-webservice.exe ./webapp/cmd/*.go
 
 testInternal :
 	make cleanTestCache
@@ -18,7 +21,7 @@ dockerDown :
 	docker-compose down -v --remove-orphans
 
 workApp :
-	docker exec -it gophercon sh
+	docker exec -it go-webservice sh
 
 dockerFinal :
 	docker build -t go-final:latest -f ./docker/Dockerfile .

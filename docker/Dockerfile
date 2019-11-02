@@ -10,19 +10,14 @@ RUN apk update && apk upgrade && \
   make \
   tree \
   jq \
-  python \
-  python-dev \
-  py-pip \
   build-base \
-  && pip install awscli \
-  && apk --purge -v del py-pip \
   && rm -rf /var/cache/apk/*
 EXPOSE 8080
 
 # build
 FROM develop AS build
-COPY ./ /goweb/
-WORKDIR /goweb/
+COPY ./ /go-webservice/
+WORKDIR /go-webservice/
 RUN make toLinux
 
 # final
@@ -30,6 +25,6 @@ FROM alpine:latest
 RUN apk update && apk upgrade \
   && apk add --no-cache ca-certificates \
   && rm -rf /var/cache/apk/*
-COPY --from=build /goweb/go-app /bin/go-app
+COPY --from=build /go-webservice/go-webservice /bin/go-webservice
 EXPOSE 8080
-CMD ["./bin/go-app"]
+CMD ["./bin/go-webservice"]
