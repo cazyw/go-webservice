@@ -21,7 +21,7 @@ go mod init github.com/cazyw/go-webservice
 
 ```
 
-To build
+To build (inside the docker container)
 
 ```
 make toLinux
@@ -32,9 +32,9 @@ make toWindows
 To test the running app
 
 ```
-./go-webservice
+./go-webservice or ./go-webservice.exe
 
-curl http://localhost:8080
+curl http://localhost:8080 or visit the site
 ```
 
 Resources:
