@@ -17,7 +17,7 @@ Go modules for dependency management
 
 ```
 // inside the container
-go mod init github.com/cazyw/gophercon
+go mod init github.com/cazyw/go-webservice
 
 ```
 

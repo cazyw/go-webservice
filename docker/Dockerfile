@@ -21,8 +21,8 @@ EXPOSE 8080
 
 # build
 FROM develop AS build
-COPY ./ /gophercon/
-WORKDIR /gophercon/
+COPY ./ /goweb/
+WORKDIR /goweb/
 RUN make toLinux
 
 # final
@@ -30,6 +30,6 @@ FROM alpine:latest
 RUN apk update && apk upgrade \
   && apk add --no-cache ca-certificates \
   && rm -rf /var/cache/apk/*
-COPY --from=build /gophercon/goapp /bin/goapp
+COPY --from=build /goweb/go-app /bin/go-app
 EXPOSE 8080
-CMD ["./bin/goapp"]
+CMD ["./bin/go-app"]
